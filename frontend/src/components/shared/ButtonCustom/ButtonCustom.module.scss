@@ -1,0 +1,33 @@
+@import "../../core/styles/_mixins";
+@import "../../core/styles/_variables";
+
+button {
+  @include flex-row-full-center();
+  @include roboto-14-regular();
+
+  border-radius: 8px;
+}
+
+.with_icon {
+  gap: 6px;
+  padding: 10px 12px 10px 18px;
+}
+
+.no_icon {
+  padding: 10px 24px 10px 24px;
+}
+
+.only_icon {
+  padding: 12px;
+}
+
+.primary {
+  @include button-primary();
+}
+.primary:hover { @include button-primary-hover(); }
+
+.outline { @include button-outline(); }
+
+.player { @include button-player(); }
+.player:hover { @include button-player-hover(); }
+.player:active { @include button-player-active(); }

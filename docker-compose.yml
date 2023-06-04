@@ -1,0 +1,68 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      context: frontend/.
+      dockerfile: Dockerfile
+    ports:
+      - '80:80'
+    depends_on:
+      - app
+      - minio
+
+  app:
+    build:
+      context: backend/.
+      dockerfile: Dockerfile
+      args:
+        - Test:true
+    env_file:
+      - .env
+    entrypoint: [ 'python', 'server.py' ]
+    ports:
+      - '8080:8080'
+    depends_on:
+      - postgres
+      - minio
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - '5432:5432'
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+
+  minio:
+    image: minio/minio:latest
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+      MINIO_BROWSER_REDIRECT_URL: ${MINIO_BROWSER_REDIRECT_URL}
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    command: server --console-address ":9001" /data
+    volumes:
+      - minio-data:/data
+
+  minio-create-buckets:
+    image: minio/mc
+    depends_on:
+      - minio
+    entrypoint: >
+      /bin/sh -c "
+      /usr/bin/mc alias set myminio http://minio:9000 ${MINIO_ROOT_USER} ${MINIO_ROOT_PASSWORD};
+      /usr/bin/mc mb myminio/${MINIO_DEFAULT_BUCKET};
+      /usr/bin/mc policy set public myminio/${MINIO_DEFAULT_BUCKET};
+      exit 0;
+      "
+
+
+volumes:
+  pg-data:
+  minio-data:

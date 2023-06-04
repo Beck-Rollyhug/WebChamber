@@ -1,0 +1,68 @@
+@import "../../core/styles/_variables";
+
+@mixin roboto-14-regular {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+@mixin roboto-16-regular {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+@mixin roboto-24-medium {
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+@mixin roboto-32-medium {
+  font-family: 'Roboto', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+@mixin flex-row-full-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin button-primary {
+  color: white;
+  background-color: $base-accent;
+  border: 1px solid $base-accent;
+}
+
+@mixin button-primary-hover {
+  background-color: $base-light;
+  border: 1px solid $base-light;
+  cursor: pointer;
+}
+
+@mixin button-outline {
+  color: $base-dark;
+  background-color: transparent;
+  border: 1px solid $base-accent;
+  cursor: pointer;
+}
+
+@mixin button-player {
+  width: 64px;
+  height: 40px;
+  border-radius: 8px;
+  padding: 0;
+  background-color: $surf-container-dark-high;
+  border: 1px solid $outline-dark-var;
+}
+
+@mixin button-player-hover {
+  border: 1px solid $outline-dark;
+}
+
+@mixin button-player-active {
+  background-color: $surf-container-dark-highest;
+}

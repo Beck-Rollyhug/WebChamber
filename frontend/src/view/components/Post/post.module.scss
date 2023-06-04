@@ -1,0 +1,71 @@
+$text_primary: #565656;
+$media_border: #ececec;
+
+$post_width: 273px;
+
+$preview_width: 271px;
+$preview_height: 165px;
+
+$mockup_border: 1px solid #ff9c9c;
+
+.infoBoxChallenge {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 4px 0;
+}
+
+.infoBoxOneAuthor {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 4px 0;
+    gap: 10px;
+}
+
+.infoBoxMultipleAuthors {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 4px 0;
+}
+
+.likesWithAuthors {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.authorsListLabel {
+  text-decoration: underline;
+}
+
+.postBox {
+    display: flex;
+    flex-direction: column;
+    width: $post_width;
+}
+
+.media {
+    width: $preview_width;
+    height: $preview_height;
+    border-radius: 8px;
+    border: 1px solid $media_border;
+    background-color: white;
+}
+
+.text {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: $text_primary;
+}
+
+.likes {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}

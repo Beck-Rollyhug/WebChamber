@@ -1,0 +1,10 @@
+@import 'src/components/core/styles/variables' ;
+
+//$back_old: #222222;
+
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: flex-start;
+}
